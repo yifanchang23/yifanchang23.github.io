@@ -1,6 +1,6 @@
 # Yifan Chang — Personal Website
 
-[Visit the website](https://yifanchang13.github.io/tonyifanchang/)
+[Visit the website](https://yifanchang23.github.io/)
 
 Academic homepage of Yifan Chang, a Finance Ph.D. candidate at Tsinghua University PBC School of Finance.
 
