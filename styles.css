@@ -19,6 +19,7 @@
   --rule: #d9d3c2;
   --navy: #00356b;
   --cream: #f4ecd8;
+  --paper-note-size: .86rem;
   font-size: 112.5%;
 }
 body {
@@ -87,10 +88,22 @@ main p { margin: .9em 0; }
 .authors { font-weight: 400; }
 .authors a { color: var(--ink); border-bottom: 1px dotted var(--muted); }
 .authors a:hover { color: var(--navy); border-bottom-color: currentColor; text-decoration: none; }
-.paper-status, .presentations { margin: .4em 0 0; font-size: .86em; color: var(--muted); }
-.abstract { margin: .35em 0 0; }
+.paper-status, .presentations { margin: .4em 0 0; font-size: var(--paper-note-size); color: var(--muted); }
+.abstract { margin: .35em 0 0; width: 100%; }
 .abstract summary { width: fit-content; color: var(--navy); cursor: pointer; font-size: .86em; }
-.abstract p { margin: 15px 0 0; font-size: .86em; font-style: italic; text-align: justify; }
+.abstract p {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  margin: 15px 0 0;
+  font-family: inherit;
+  font-size: var(--paper-note-size);
+  font-weight: 400;
+  font-style: italic;
+  line-height: inherit;
+  color: var(--muted);
+  text-align: justify;
+}
 .cv-heading { text-align: center; }
 .cv-heading p { margin: .2em 0 .6em; color: var(--muted); }
 .cv-entries { margin: .6em 0 1.2em; }
@@ -107,8 +120,8 @@ strong { font-weight: 600; }
 .cat-page .page-heading { flex: none; }
 .cat-gallery-frame { container-type: size; display: grid; place-items: center; flex: 1; min-height: 0; }
 .cat-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 14px; width: min(100cqw, 100cqh, 540px); aspect-ratio: 1; }
-.cat-gallery a { display: block; min-height: 0; }
-.cat-gallery img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+.cat-gallery a { display: block; min-width: 0; min-height: 0; overflow: hidden; border-radius: 4px; }
+.cat-gallery img { display: block; width: 100%; height: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; }
 .cat-page .site-footer { flex: none; margin-top: 1em; padding-bottom: 1em; }
 .honors-groups dd p { font-size: 1em; color: var(--ink); }
 .site-footer { margin: 5em 8% 0; padding: 0 0 3em; }
