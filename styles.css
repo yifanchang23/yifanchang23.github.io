@@ -61,7 +61,6 @@ img { max-width: 100%; }
 .site-header nav { padding: .95em 0; }
 .site-header nav a { display: table; margin: auto; padding: .25em 0; font-size: 1.216em; line-height: 1.6; letter-spacing: .02em; }
 .sidebar-contact { display: grid; justify-items: center; gap: .3em; margin-top: 1.35em; color: var(--cream); font-size: .86em; font-style: normal; overflow-wrap: anywhere; }
-.street { margin-top: .6em; color: rgb(244 236 216 / 82%); }
 .short-label { display: none; }
 
 .container { margin-left: 25%; }
@@ -91,7 +90,7 @@ main p { margin: .9em 0; }
 .paper-status, .presentations { margin: .4em 0 0; font-size: .86em; color: var(--muted); }
 .abstract { margin: .35em 0 0; }
 .abstract summary { width: fit-content; color: var(--navy); cursor: pointer; font-size: .86em; }
-.abstract p { max-width: 650px; margin: 15px 0 0; }
+.abstract p { margin: 15px 0 0; font-size: .86em; font-style: italic; text-align: justify; }
 .cv-heading { text-align: center; }
 .cv-heading p { margin: .2em 0 .6em; color: var(--muted); }
 .cv-entries { margin: .6em 0 1.2em; }
@@ -101,8 +100,17 @@ main p { margin: .9em 0; }
 .cv-entries dd p { color: var(--muted); font-size: .86em; }
 strong { font-weight: 600; }
 .institution-heading { font-size: 1em; font-style: italic; font-weight: 400; color: var(--muted); margin: 1.4em 0 .4em; }
-.cat-gallery { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.4em; margin-top: 2em; }
-.cat-gallery img { display: block; width: 100%; height: auto; border-radius: 4px; }
+/* Let the four thumbnails fit the space below the heading at any viewport height. */
+.cat-page { height: 100svh; }
+.cat-page .container { height: 100%; display: flex; flex-direction: column; min-height: 0; }
+.cat-page main { display: flex; flex-direction: column; flex: 1; min-height: 0; margin: 1.4em 8% 0; }
+.cat-page .page-heading { flex: none; }
+.cat-gallery-frame { container-type: size; display: grid; place-items: center; flex: 1; min-height: 0; }
+.cat-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 14px; width: min(100cqw, 100cqh, 540px); aspect-ratio: 1; }
+.cat-gallery a { display: block; min-height: 0; }
+.cat-gallery img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+.cat-page .site-footer { flex: none; margin-top: 1em; padding-bottom: 1em; }
+.honors-groups dd p { font-size: 1em; color: var(--ink); }
 .site-footer { margin: 5em 8% 0; padding: 0 0 3em; }
 .site-footer p { margin: 0; padding-top: 1em; border-top: 1px solid var(--rule); color: var(--muted); font-size: .86em; font-style: italic; }
 .separator { margin: 0 .3em; }
@@ -115,19 +123,34 @@ strong { font-weight: 600; }
   .sidebar-contact { margin: .45em 0 0; display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: .4em 1em; }
   .full-label { display: none; }
   .short-label { display: inline; }
-  .sidebar-contact summary { cursor: pointer; }
-  .mobile-address { display: block; margin-top: .6em; }
+  .cat-page { display: flex; flex-direction: column; }
+  .cat-page .site-header { flex: none; padding: 12px 20px; }
+  .cat-page .identity { display: grid; grid-template-columns: 80px minmax(0, 1fr); column-gap: 14px; align-items: center; text-align: left; }
+  .cat-page .avatar-link { grid-row: span 2; }
+  .cat-page .avatar { width: 76px; height: 76px; }
+  .cat-page .site-name { margin: 0; }
+  .cat-page .identity p { margin: 0; }
+  .cat-page .site-header nav { display: flex; justify-content: center; align-items: center; gap: .8em; padding: .3em 0; }
+  .cat-page .site-header nav a { margin: 0; line-height: 1.3; padding: .15em 0; }
+  .cat-page main h1 { margin: .2em 0 .4em; }
+  .cat-page .site-footer { margin-top: .5em; padding-bottom: .6em; }
+  .cat-page .container { flex: 1; height: auto; }
+  .cat-page main { margin-top: .6em; }
 }
 @media (max-width: 760px) {
   .profile-photo { width: 120px; }
 }
 @media (max-width: 600px) {
-  .cv-entries > div, .cat-gallery { grid-template-columns: 1fr; gap: .1em; }
-  .cat-gallery { gap: 1em; }
+  .cv-entries > div { grid-template-columns: 1fr; gap: .1em; }
 }
 @media print {
   .site-header, .skip-link { display: none; }
   .container { margin: 0; }
   main { margin: 0; }
   .cv-entries > div { break-inside: avoid; }
+  .cat-page, .cat-page .container { height: auto; display: block; }
+  .cat-page main { display: block; }
+  .cat-gallery-frame { container-type: normal; display: block; }
+  .cat-gallery { width: min(100%, 540px); }
+  .cat-gallery img { aspect-ratio: 1; height: auto; }
 }
